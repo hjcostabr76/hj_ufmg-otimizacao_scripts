@@ -53,6 +53,5 @@ function unrestricted_search_fixed(f, start, step, is_min)
 
     fprintf('\nIterações: %d', i)
     fprintf('\nÓtimo: (%d, %d)', optimun_x, optimun_f_x)
-    fprintf('\nÚltimo ponto testado: (%d, %d)', next_x, next_f_x)
     fprintf('\n-- FIM --\n')
 end
