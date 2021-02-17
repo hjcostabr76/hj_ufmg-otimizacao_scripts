@@ -30,12 +30,13 @@ function unrestricted_search_accelerated(f, start, initialStep, is_min)
         next_x = current_x + step
         next_f_x = f(next_x)
         
+        f_x(i, 1:size(f_x, 2)) = [next_x next_f_x]
+        
         if ((is_min && (next_f_x > current_f_x)) || ((~is_min) && (next_f_x < current_f_x)))
             break 
         end
         
         % Preparar para nova iteracao
-        f_x(i, 1:size(f_x, 2)) = [next_x next_f_x]
         step = (2 * step)
 
         previous_x = current_x
@@ -48,7 +49,7 @@ function unrestricted_search_accelerated(f, start, initialStep, is_min)
 
     % Determina ponto otimo
     optimun_x = (previous_x + next_x) / 2
-    optimun_f_x = (previous_f_x + next_f_x) / 2
+    optimun_f_x = f(optimun_x)
 
     % Exibe resultado
     fprintf('Histórico: ')

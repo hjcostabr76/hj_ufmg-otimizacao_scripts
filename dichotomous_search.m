@@ -72,7 +72,7 @@ function dichotomous_search(f, interval, percentage_accuracy, delta, is_min)
 
     % Determina ponto otimo
     optimun_x = (lower_bound + upper_bound) / 2
-    optimun_f_x = (left_f_x + right_f_x) / 2
+    optimun_f_x = f(optimun_x)
 
     % Exibe resultado
     fprintf('Histórico: ')

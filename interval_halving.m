@@ -66,7 +66,7 @@ function interval_halving(f, interval, percentage_accuracy, is_min)
 
     % Determina ponto otimo
     optimun_x = (lower_bound + upper_bound) / 2
-    optimun_f_x = (f1 + f2) / 2
+    optimun_f_x = f(optimun_x)
 
     % Exibe resultado
     fprintf('Histórico: ')

@@ -2,8 +2,8 @@ function exhaustive_search(f, interval, percentage_accuracy, is_min)
 
     MAX_ITERATIONS = 25
 
-    current_f_x = 0
     current_x = interval(1)
+    current_f_x = f(current_x)
     
     previous_x = 0
     previous_f_x = 0
@@ -55,7 +55,7 @@ function exhaustive_search(f, interval, percentage_accuracy, is_min)
 
     % Determina ponto otimo
     optimun_x = (previous_x + next_x) / 2
-    optimun_f_x = (previous_f_x + next_f_x) / 2
+    optimun_f_x = f(optimun_x)
 
     % Exibe resultado
     fprintf('Histórico: ')
@@ -63,6 +63,5 @@ function exhaustive_search(f, interval, percentage_accuracy, is_min)
 
     fprintf('\nIterações: %d', i)
     fprintf('\nÓtimo: (%d, %d)', optimun_x, optimun_f_x)
-    fprintf('\nÚltimo ponto testado: (%d, %d)', next_x, next_f_x)
     fprintf('\n-- FIM --\n')
 end

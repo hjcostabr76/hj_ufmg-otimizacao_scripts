@@ -45,7 +45,7 @@ function unrestricted_search_fixed(f, start, step, is_min)
 
     % Determina ponto otimo
     optimun_x = (previous_x + next_x) / 2
-    optimun_f_x = (previous_f_x + next_f_x) / 2
+    optimun_f_x = f(optimun_x)
 
     % Exibe resultado
     fprintf('Histórico: ')
