@@ -1,4 +1,4 @@
-function [test_points bounds_history] = fibonacci(f, initial_bounds, n, is_min)
+function [optimun_x optimun_f i test_points bounds_history history] = fibonacci(f, initial_bounds, n, is_min, display_result, displacement)
 
     % Valida entrada
     if (n <= 2)
@@ -23,7 +23,11 @@ function [test_points bounds_history] = fibonacci(f, initial_bounds, n, is_min)
 
     i = 1
     j = 2
-    displacement = get_displacement(n, j, b - a) 
+
+    % Determina deslocamento inicial (se necessario)
+    if ~exist('displacement','var')
+        displacement = get_displacement(n, j, b - a)
+    end
     
     while (j < n)
 
@@ -78,29 +82,19 @@ function [test_points bounds_history] = fibonacci(f, initial_bounds, n, is_min)
     optimun_f = f(optimun_x)
 
     % Exibe resultado
-    fprintf('Histórico: ')
-    history
+    if (~exist('display_result','var') || display_result)
+        
+        fprintf('Histórico: ')
+        history
 
-    fprintf('\nIterações: %d', i)
-    fprintf('\nÓtimo: (%d, %d)', optimun_x, optimun_f)
-    fprintf('\n-- FIM --\n')
+        fprintf('\nIterações: %d', i)
+        fprintf('\nÓtimo: (%d, %d)', optimun_x, optimun_f)
+        fprintf('\n-- FIM --\n')
+
+    end
+
 end
 
 function [displacement] = get_displacement(n, j, interval_length)
     displacement = interval_length * get_fibonacci_number(n - j) / get_fibonacci_number(n -(j - 2))
-end
-
-
-function [fibonacci_number] = get_fibonacci_number(n)
-
-    if (n < 0)
-        fprintf('Índice inválido para sequência Fibonacci (%d)!\n', n)
-        return
-
-    elseif (n <= 1)
-        fibonacci_number = 1
-    else
-        fibonacci_number = get_fibonacci_number(n - 1) + get_fibonacci_number(n - 2)
-    end
-    
 end
